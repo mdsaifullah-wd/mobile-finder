@@ -39,10 +39,10 @@ const displayPhones = () => {
     }
   })
   }
-const displayDetails = (clicked_id) => {
+const displayDetails = (clickedId) => {
   const detailResult = document.getElementById('detail-result');
   detailResult.textContent = ''
-  const url = `https://openapi.programming-hero.com/api/phone/${clicked_id}`
+  const url = `https://openapi.programming-hero.com/api/phone/${clickedId}`
   // console.log(url)
   fetch(url)
   .then(res => res.json())
@@ -52,10 +52,10 @@ const displayDetails = (clicked_id) => {
     const div = document.createElement('div');
     
   div.innerHTML = `
-    <div class="col-md-4">
+    <div class="col-md-6">
       <img class="d-block w-75 mx-auto" src=${data.data.image}>
     </div>
-    <div class="col-md-8 mt-5 my-md-auto p-4 p-md-0">
+    <div class="col-md-6 mt-5 my-md-auto p-4 p-md-0">
       <h2>${data.data.name}</h2>
       <p>${release}</p>
       <h3>Main Features</h3>
@@ -65,6 +65,15 @@ const displayDetails = (clicked_id) => {
         <li>Chipset: ${data.data.mainFeatures.chipSet}</li>
         <li>Memory: ${data.data.mainFeatures.memory}</li>
         <li>Sensors: ${data.data.mainFeatures.sensors}</li>
+      </ul>
+      <h3>Other Features</h3>
+      <ul>
+        <li>WLAN: ${data.data.others.WLAN}</li>
+        <li>Bluetooth: ${data.data.others.Bluetooth}</li>
+        <li>GPS: ${data.data.others.GPS}</li>
+        <li>NFC: ${data.data.others.NFC}</li>
+        <li>Radio: ${data.data.others.Radio}</li>
+        <li>USB: ${data.data.others.USB}</li>
       </ul>
     </div>
   `
