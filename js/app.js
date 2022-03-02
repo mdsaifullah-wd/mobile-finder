@@ -69,38 +69,78 @@ const displayDetails = (clickedId) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      // Create and append div using bootstrap styles
-      const div = document.createElement("div");
+      {
+        // Create and append div using bootstrap styles
+        const div = document.createElement("div");
 
-      div.innerHTML = `
-    <div class="col-md-6">
-      <img class="d-block w-75 mx-auto" src=${data.data.image}>
-    </div>
-    <div class="col-md-6 mt-5 my-md-auto p-4 p-md-0">
-      <h2>${data.data.name}</h2>
-      <p>${
-        data.data.releaseDate ? data.data.releaseDate : "No Release Date Found"
-      }</p>
-      <h3>Main Features</h3>
-      <ul>
-        <li>Storage: ${data.data.mainFeatures.storage}</li>
-        <li>Display Size: ${data.data.mainFeatures.displaySize}</li>
-        <li>Chipset: ${data.data.mainFeatures.chipSet}</li>
-        <li>Memory: ${data.data.mainFeatures.memory}</li>
-        <li>Sensors: ${data.data.mainFeatures.sensors.join(", ")}</li>
-      </ul>
-      <h3>Other Features</h3>
-      <ul>
-        <li>WLAN: ${data.data.others.WLAN}</li>
-        <li>Bluetooth: ${data.data.others.Bluetooth}</li>
-        <li>GPS: ${data.data.others.GPS}</li>
-        <li>NFC: ${data.data.others.NFC}</li>
-        <li>Radio: ${data.data.others.Radio}</li>
-        <li>USB: ${data.data.others.USB}</li>
-      </ul>
-    </div>
-  `;
-      div.classList.add("row");
-      detailResult.appendChild(div);
+        div.innerHTML = `
+          <div class="col-md-6">
+            <img class="d-block w-75 mx-auto" src=${data.data.image}>
+          </div>
+          <div class="col-md-6 mt-5 my-md-auto p-4 p-md-0">
+            <h2>${data.data.name}</h2>
+            <p>${
+              data.data.releaseDate
+                ? data.data.releaseDate
+                : "No Release Date Found"
+            }</p>
+            <h3>Main Features</h3>
+            <ul>
+              <li>Storage: ${
+                data.data.mainFeatures?.storage
+                  ? data.data.mainFeatures?.storage
+                  : "No Data Found"
+              }</li>
+              <li>Display Size: ${
+                data.data.mainFeatures?.displaySize
+                  ? data.data.mainFeatures?.displaySize
+                  : "No Data Found"
+              }</li>
+              <li>Chipset: ${
+                data.data.mainFeatures?.chipSet
+                  ? data.data.mainFeatures?.chipSet
+                  : "No Data Found"
+              }</li>
+              <li>Memory: ${
+                data.data.mainFeatures?.memory
+                  ? data.data.mainFeatures?.memory
+                  : "No Data Found"
+              }</li>
+              <li>Sensors: ${
+                data.data.mainFeatures?.sensors
+                  ? data.data.mainFeatures.sensors.join(", ")
+                  : "No Data Found"
+              }</li>
+            </ul>
+            <h3>Other Features</h3>
+            <ul>
+              <li>WLAN: ${
+                data.data.others?.WLAN ? data.data.others.WLAN : "No Data Found"
+              }</li>
+              <li>Bluetooth: ${
+                data.data.others?.Bluetooth
+                  ? data.data.others.Bluetooth
+                  : "No Data Found"
+              }</li>
+              <li>GPS: ${
+                data.data.others?.GPS ? data.data.others.GPS : "No Data Found"
+              }</li>
+              <li>NFC: ${
+                data.data.others?.NFC ? data.data.others.NFC : "No Data Found"
+              }</li>
+              <li>Radio: ${
+                data.data.others?.Radio
+                  ? data.data.others.Radio
+                  : "No Data Found"
+              }</li>
+              <li>USB: ${
+                data.data.others?.USB ? data.data.others.USB : "No Data Found"
+              }</li>
+            </ul>
+          </div>
+        `;
+        div.classList.add("row");
+        detailResult.appendChild(div);
+      }
     });
 };
