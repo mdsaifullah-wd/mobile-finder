@@ -69,9 +69,6 @@ const displayDetails = (clickedId) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      const release = data.data.releaseDate
-        ? data.data.releaseDate
-        : "No Release Date Found";
       // Create and append div using bootstrap styles
       const div = document.createElement("div");
 
@@ -81,7 +78,9 @@ const displayDetails = (clickedId) => {
     </div>
     <div class="col-md-6 mt-5 my-md-auto p-4 p-md-0">
       <h2>${data.data.name}</h2>
-      <p>${release}</p>
+      <p>${
+        data.data.releaseDate ? data.data.releaseDate : "No Release Date Found"
+      }</p>
       <h3>Main Features</h3>
       <ul>
         <li>Storage: ${data.data.mainFeatures.storage}</li>
