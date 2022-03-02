@@ -23,17 +23,13 @@ const displayPhones = () => {
         console.log(phone)
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card" style="width: 18rem">
-          <img src=${phone[0].image} class="card-img-top" alt="..." />
+        <div class="card p-3">
+          <img src=${phone[0].image} class="card-img-top" />
           <div class="card-body">
-          <h5 class="card-title">${phone[0].phone_name}</h5>
-          <p class="card-text">
-          ${phone[0].brand}
-          </p>
+            <h5 class="card-title fs-3">${phone[0].phone_name}</h5>
+            <p class="card-text fs-4">${phone[0].brand}</p>
           </div>
-          <div class="card-body">
           <button id=${phone[0].slug} onclick="displayDetails(this.id)" class="btn btn-dark">Details</button>
-          </div>
           </div>
           `
           div.classList.add('col-md-4')
@@ -56,10 +52,10 @@ const displayDetails = (clicked_id) => {
     const div = document.createElement('div');
     
   div.innerHTML = `
-    <div class="col-md-3">
-      <img class="w-100" src=${data.data.image}>
+    <div class="col-md-4">
+      <img class="d-block w-75 mx-auto" src=${data.data.image}>
     </div>
-    <div class="col-md-9 my-auto">
+    <div class="col-md-8 mt-5 my-md-auto p-4 p-md-0">
       <h2>${data.data.name}</h2>
       <p>${release}</p>
       <h3>Main Features</h3>
@@ -72,7 +68,7 @@ const displayDetails = (clicked_id) => {
       </ul>
     </div>
   `
-  div.classList.add('row')
+  div.classList.add('row',)
 detailResult.appendChild(div)
 })  
 }
