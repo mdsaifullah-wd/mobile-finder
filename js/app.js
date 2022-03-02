@@ -17,20 +17,22 @@ const displayPhones = () => {
     }
     else {
       toggleElementDisplay('error-message','none')
-      for (const phone of data.data) {
-        // console.log(phone)
+      const phones = Object.keys(data.data).slice(0,20).map(key => ({0:data.data[key]}));
+      console.log(phones)
+      for (const phone of phones) {
+        console.log(phone)
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card" style="width: 18rem">
-          <img src=${phone.image} class="card-img-top" alt="..." />
+          <img src=${phone[0].image} class="card-img-top" alt="..." />
           <div class="card-body">
-          <h5 class="card-title">${phone.phone_name}</h5>
+          <h5 class="card-title">${phone[0].phone_name}</h5>
           <p class="card-text">
-          ${phone.brand}
+          ${phone[0].brand}
           </p>
           </div>
           <div class="card-body">
-          <button id=${phone.slug} onclick="displayDetails(this.id)" class="btn btn-dark">Details</button>
+          <button id=${phone[0].slug} onclick="displayDetails(this.id)" class="btn btn-dark">Details</button>
           </div>
           </div>
           `
